@@ -76,7 +76,6 @@ class SiteController extends Controller
             'posters' => $model
         ]);
     }
-
     public function actionPosters()
     {
         $db = Posters::find()->orderBy(['id'=> SORT_DESC]);
@@ -159,6 +158,54 @@ class SiteController extends Controller
     }
 
 
+    public function actionEdit($id)
+    {
+        $checkPosters = Posters::findOne($id);
+            if ( !Yii::$app->user->isGuest )
+            {
+                if ( (Yii::$app->user->identity->username == $checkPosters->user->username) || (Yii::$app->user->can('admin')) )
+                {
+                        $model = Posters::findOne($id);
+
+                        if ($model -> load(Yii::$app->request->post()))
+                            {
+                                $model->save();
+                                return $this->redirect(['/site/one', 'id'=>$id]);
+                            }
+                        return $this->render('edit', ['model'=>$model]);
+                }
+                else
+                {
+                    return $this->redirect(['/']);
+                }
+            }
+            else
+            {
+                return $this->redirect(['/']);
+            }
+    }
+
+    public function actionDelete($id)
+    {
+        $checkPosters = Posters::findOne($id);
+            if ( !Yii::$app->user->isGuest )
+            {
+                if ( (Yii::$app->user->identity->username == $checkPosters->user->username) || (Yii::$app->user->can('admin')) )
+                {
+                        $model = Posters::findOne($id);
+                        $model->delete();
+                        return $this->redirect(['/site/posters']);
+                }
+                else
+                {
+                    return $this->redirect(['/']);
+                }
+            }
+            else
+            {
+                return $this->redirect(['/']);
+            }
+    }
     /**
      * Logs in a user.
      *

@@ -29,10 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'type',
             'description:ntext',
-            'rule_name',
+            // 'rule_name',
             'data',
-            //'created_at',
-            //'updated_at',
+            // 'created_at',
+            // 'updated_at',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, AuthItem $model, $key, $index, $column) {

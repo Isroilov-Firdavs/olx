@@ -7,6 +7,7 @@ use backend\models\AuthRuleSerch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * AuthruleController implements the CRUD actions for AuthRule model.

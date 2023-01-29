@@ -73,6 +73,19 @@
                             <p class="card-text" style="margin: 0"><?=$posters->addres->c_name?> viloyati.</p>
                             <p class="card-text">- <?=$posters->data?></p>
                             <h5 class="card-subtitle mb-2"><?=$posters->price?> SO'M</h5>
+                            <?php
+
+                              if (Yii::$app->user->isGuest)
+                              {
+
+                              } else if((Yii::$app->user->can('admin') || ($posters->user->username == Yii::$app->user->identity->username)))
+                              {
+                                ?>
+                            <a class="btn btn-warning" href="/site/edit?id=<?=$posters->id?>">Taxrirlash</a>
+                            <a class="btn btn-danger" href="/site/delete?id=<?=$posters->id?>">O'chirish</a>
+                                <?php
+                              }
+                            ?>
                             </div>
                         </div>
                     </div>

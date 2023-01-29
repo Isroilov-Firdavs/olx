@@ -1,6 +1,9 @@
 <div class="container">
   <div class="row">
     <?foreach ($model as $one):?>
+      <?php
+    $this->title = $one->title;
+    ?>
     <div class="col-lg-8">
       <div class="container mb-5 mtt">
         <div class="row">
@@ -51,8 +54,20 @@
                 <p>E'lonlar soni: 20 ta</p>
               </div>
             </div>
-            <a href="#" type="button" class="btn btn-outline-secondary">+998911234567</a>
             <a href="/site/profile?id=<?=$one->user_id?>" type="button" class="btn mt-3 btn-success">Muallifning boshqa e'lonlari</a>
+            <?php
+
+              if (Yii::$app->user->isGuest)
+              {
+
+              } else if((Yii::$app->user->can('admin') || ($posters->user->username == Yii::$app->user->identity->username)))
+              {
+                ?>
+                  <a href="/site/edit?id=<?=$one->id?>" class="mt-1 btn btn-warning">O'zgartirish</a>
+                  <a href="/site/delete?id=<?=$one->id?>" type="button" class="mt-1 btn btn-danger">O'chiqish</a>
+                <?php
+              }
+            ?>
           </div>
         </div>
       </div>
