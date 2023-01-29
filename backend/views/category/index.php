@@ -37,5 +37,10 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 
+<h1>Icons</h1>
+<?= Html::a('<i class="fas fa-sign-out-alt"></i>', ['/category'], ['data-method' => 'post', 'class' => 'nav-link']) ?>
+
+
+<?= Html::a('<i class="fas fa-user"></i>', ['/category'], ['data-method' => 'post', 'class' => 'nav-link']) ?>
 
 </div>
