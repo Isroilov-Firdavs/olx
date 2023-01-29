@@ -1,0 +1,102 @@
+.img-poster{
+  height: 14rem;
+  /*width: 18rem; */
+  overflow: hidden;
+}
+
+@media screen and (max-width: 800px)  {
+  .img-poster{
+    height: 20rem;
+  }
+}
+
+@media screen and (max-width: 980px)  {
+  .img-poster{
+    height: 25rem;
+  }
+}
+nav{
+  margin-bottom: 50px;
+}
+
+.poster-link{
+  text-decoration: none;
+}
+
+.poster-link:hover{
+  background-color: rgb(0, 0, 73);
+  color: white;
+}
+
+.poster-title{
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.poster-title-cont{
+  height: 55px;
+  word-break: break-all;
+  overflow: hidden;
+}
+
+.category-poster{
+  text-decoration: none;
+  color: black;
+}
+
+.last-posters{
+  font-size: 20px;
+  font-weight: 600;
+}
+
+
+.img-board{
+  height: 14rem;
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.flex-poster-body{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.flex-poster-title{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.title-item-one{
+  width: 400px;
+}
+
+.search-filter{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.price-input-filter{
+  width: 90px !important;
+}
+
+.img-poster-page{
+  width: 600px;
+}
+
+.mtt{
+  margin-top: 6rem !important;
+  margin-top: 250px;
+}
+
+.poster-page-title{
+  font-weight: normal;
+}
+
+.poster-page-amount{
+  font-weight: 700;
+}
