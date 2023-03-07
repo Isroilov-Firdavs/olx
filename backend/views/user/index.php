@@ -1,24 +1,23 @@
 <?php
 
-use backend\models\Posters;
+use backend\models\User;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var backend\models\PostersSerch $searchModel */
+/** @var backend\models\UserSerch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Posters';
+$this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="posters-index">
+<div class="user-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Posters', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -30,16 +29,19 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'title',
-            'price',
-            // 'category',
-            'image',
-            //'description:ntext',
-            //'user_id',
-            // 'address',
+            'username',
+            // 'auth_key',
+            // 'password_hash',
+            // 'password_reset_token',
+            'email:email',
+            'status',
+            //'created_at',
+            //'updated_at',
+            //'verification_token',
+            'is_admin',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Posters $model, $key, $index, $column) {
+                'urlCreator' => function ($action, User $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],
