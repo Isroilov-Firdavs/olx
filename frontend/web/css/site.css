@@ -101,3 +101,26 @@ a.desc:after {
 {
     text-decoration: none;
 }
+
+.category_filter a{
+    text-decoration: none;
+    margin-left: 1rem;
+    color: black;
+}
+
+
+.category_filter a:hover{
+  background-color: rgb(0, 0, 73);
+  color: white;
+}
+
+..category_filter a span{
+    color: #808080;
+}
+
+#select2_posters_address{
+    border: 0.1rem solid red;
+}
+#foo{
+    border: 0.1rem solid red;
+}

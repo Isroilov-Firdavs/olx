@@ -19,14 +19,22 @@ $this->title = "E'lon qo'shish";
 ?>
 <div class="site-add">
 
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div id="loader">
+                
+            </div>
+        </div>
+    </div>
+
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
         <div class="col-lg-6">
-        <?= $form->field($model, 'title') ?>
+        <?= $form->field($model, 'title')->textInput(['id' => 'title']) ?>
         </div>
         <div class="col-lg-6">
         <?php // $form->field($model, 'price')?>
-        <?=$form->field($model, 'price', )->widget(MaskMoney::classname(), [
+        <?=$form->field($model, 'price', )->textInput(['id' => '444444'])->widget(MaskMoney::classname(), [
             'name' => 'amount_rounded_1',
             'value' => 1000,
             'pluginOptions' => [
@@ -75,7 +83,7 @@ $this->title = "E'lon qo'shish";
         <?php // $form->field($model, 'user_id') ?>
     
         <div class="form-group">
-            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'id'=> 'add_btn']) ?>
         </div>
     <?php ActiveForm::end(); ?>
 

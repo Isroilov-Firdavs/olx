@@ -36,7 +36,9 @@ class Posters extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'price', 'description'], 'required'],
+            [['title', 'price', 'category', 'address',  'description'], 'required'],
+            // [['image'], 'file',],
+            ['image', 'file', 'extensions' => 'png, jpg, png '],
             // [['price', 'category', 'user_id', 'address'], 'default', 'value' => null],
             [['price', 'category', 'user_id', 'address'], 'integer'],
             [['description'], 'string'],

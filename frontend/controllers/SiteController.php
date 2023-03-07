@@ -8,7 +8,7 @@ use Yii;
 use yii\base\InvalidArgumentException;
 use yii\base\Security;
 use yii\web\BadRequestHttpException;
-use yii\web\Controller;
+use yii\web\Controller; 
 use yii\web\UploadedFile;
 use yii\data\Pagination;
 use yii\filters\VerbFilter;
@@ -22,6 +22,7 @@ use frontend\models\ContactForm;
 use frontend\models\User;
 use frontend\models\Posters;
 use frontend\models\Category;
+use frontend\models\Country;
 
 /**
  * Site controller
@@ -72,13 +73,30 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $model = Posters::find()->orderBy(['id'=> SORT_DESC])->limit(8)->all();
+        $model_posters = Posters::find()->count();
+        // Category count
+        $count_real_estate = Posters::find()->where(['category' => 1])->count();
+        $transport = Posters::find()->where(['category' => 2])->count();
+        $electronics = Posters::find()->where(['category' => 3])->count();
+        $jobs = Posters::find()->where(['category' => 4])->count();
+
         return $this->render('index', [
-            'posters' => $model
+            'posters' => $model,
+            'count' => $model_posters,
+            'count_real_estate' => $count_real_estate,
+            'transport' => $transport,
+            'electronics' => $electronics,
+            'jobs' => $jobs
         ]);
     }
     public function actionPosters()
     {
         $db = Posters::find()->orderBy(['id'=> SORT_DESC]);
+
+        $count_real_estate = Posters::find()->where(['category' => 1])->count();
+        $transport = Posters::find()->where(['category' => 2])->count();
+        $electronics = Posters::find()->where(['category' => 3])->count();
+        $jobs = Posters::find()->where(['category' => 4])->count();
 
         $sahifa = new Pagination(
             [
@@ -89,18 +107,71 @@ class SiteController extends Controller
 
 
         $test = $db -> offset($sahifa -> offset) ->limit($sahifa -> limit) -> all();
-        return $this->render('posters', ['posters'=> $test, 'sahifa' => $sahifa]);
+        return $this->render('posters', [
+            'posters'=> $test,
+            'sahifa' => $sahifa,
+
+            'count_real_estate' => $count_real_estate,
+            'transport' => $transport,
+            'electronics' => $electronics,
+            'jobs' => $jobs
+        ]);
     }
 
     public function actionProfile($id)
     {
         $db = User::find()->where(['id' => $id])->all();
         $model = Posters::find()->where(['user_id'=> $id])->orderBy(['id'=> SORT_DESC])->all();
+        $model_count = Posters::find()->where(['user_id' => $id])->count();
+        // 
         return $this->render('profile', [
             'user'=> $db,
-            'posters'=>$model
+            'posters'=>$model,
+            'count' => $model_count,
         ]);
 
+    }
+
+    public function actionSearch($ser)
+    {
+        $model = Posters::find()->orFilterWhere(['like', 'title',$ser])->orFilterWhere(['like', 'description',  $ser])->all();
+
+
+
+        // Category count
+        $count_real_estate = Posters::find()->where(['category' => 1])->count();
+        $transport = Posters::find()->where(['category' => 2])->count();
+        $electronics = Posters::find()->where(['category' => 3])->count();
+        $jobs = Posters::find()->where(['category' => 4])->count();
+        
+        return $this->render('search', [
+            "model" => $model,
+            'count_real_estate' => $count_real_estate,
+            'transport' => $transport,
+            'electronics' => $electronics,
+            'jobs' => $jobs
+        ]);
+        // return $ser;   
+    }
+
+    public function actionSearchFilter($search, $category, $amount_from, $amount_to, $region)
+    {
+        // , $category, $amount_from, $amount_to, $region
+        $category_model = Category::find()->where(['id'=> $category]);
+        $category_model = Country::find()->where(['id'=> $region]);
+        $model = Posters::find()->orFilterWhere(['like', 'title', $search])
+        ->orFilterWhere(['ilike', 'description', $search])
+        ->orFilterWhere(['category' => $category_model ]);
+        // ->orFilterWhere(['country' => $region])
+        // ->orFilterWhere(['>', 'price', $amount_from])
+        // ->orFilterWhere(['<', 'price', $amount_to])->all();
+
+
+        return $this->render('searchfilter', [
+            'category_model' => $model,
+        ]);
+
+        // return $model;
     }
 
 
@@ -152,8 +223,20 @@ class SiteController extends Controller
     public function actionFilter($id)
     {
         $model = Posters::find()->where(['category' => $id])->orderBy(['id'=> SORT_DESC])->all();
+
+        $count_real_estate = Posters::find()->where(['category' => 1])->count();
+        $transport = Posters::find()->where(['category' => 2])->count();
+        $electronics = Posters::find()->where(['category' => 3])->count();
+        $jobs = Posters::find()->where(['category' => 4])->count();
+
+
         return $this->render('filter', [
-            'posters' => $model
+            'posters' => $model,
+
+            'count_real_estate' => $count_real_estate,
+            'transport' => $transport,
+            'electronics' => $electronics,
+            'jobs' => $jobs
             ]);
     }
 

@@ -46,10 +46,10 @@
               <img 
                 src="../photos/noAvatar.png"
                 class="rounded-circle img-fluid" 
-                alt="Cinque Terre"
+                alt="<?=$one->user->username;?>"
                 style="width: 100px; height: 100px">
               <div class="d-flex flex-column">
-                <a href="#"><h5><?=$one->user->username;?></h5></a>
+                <a href="/site/profile?id=<?=$one->user_id?>"><h5><?=$one->user->username;?></h5></a>
                 <p>Saytda: 01.01.2021 dan beri</p>
                 <p>E'lonlar soni: 20 ta</p>
               </div>
@@ -60,7 +60,7 @@
               if (Yii::$app->user->isGuest)
               {
 
-              } else if((Yii::$app->user->can('admin') || ($posters->user->username == Yii::$app->user->identity->username)))
+              } else if((Yii::$app->user->can('admin') || ($one->user->username == Yii::$app->user->identity->username)))
               {
                 ?>
                   <a href="/site/edit?id=<?=$one->id?>" class="mt-1 btn btn-warning">O'zgartirish</a>

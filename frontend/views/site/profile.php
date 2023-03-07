@@ -26,7 +26,7 @@
               <hr>
               <div class="d-flex justify-content-between">
                 <p>ID: <?=$u->created_at;?></p>
-                <p>E'lonlar soni: 10</p>
+                <p>E'lonlar soni: <?=$count;?></p>
               </div>
             </div>
           </div>

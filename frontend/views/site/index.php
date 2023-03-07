@@ -14,7 +14,6 @@ use yii\helpers\Html;
             mumkin bo'ladi. Istalgan kategoriyangizni tanlang va o'zingiz xohlagan
             e'loningizni joylashtiring</p>
             <a class="btn btn-primary" href="/site/add">E'lon joylashtirish</a>
-            <a class="btn btn-primary" href="/backend">Backend</a>
         </div>
     </div>
     <!-- Call to Action-->
@@ -25,11 +24,10 @@ use yii\helpers\Html;
     <div class="card  my-5 py-4 text-center">
         <div class="card-body">
             <form class="row g-3">
-                <label for="search" class="visually-hidden">Qidiruv</label>
-                <input type="text" class="form-control form-control-lg" id="search" placeholder="E'lonlar qidiruvi...">
+                <input type="text" class="form-control form-control-lg" id="search" placeholder="<?=$count;?> e'lonlar yoningizda">
               </div>
               <div class="col-auto">
-                <button type="submit" class="btn btn-primary btn-lg mb-3">Izlash</button>
+                <button type="submit" id="search_index" class="btn btn-primary btn-lg mb-3">Izlash</button>
               </div>
             </form>
         </div>
@@ -57,7 +55,7 @@ use yii\helpers\Html;
                     <div class="card bg-light border-0 h-100">
                         <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"></div>
-                            <h2 class="fs-4 fw-bold">Transport</h2>
+                            <h2 class="fs-4 fw-bold">Transport</span></h2>
                             <p class="mb-0">Avtomobil oldi sotdisi va ijarasi.</p>
                         </div>
                     </div>
