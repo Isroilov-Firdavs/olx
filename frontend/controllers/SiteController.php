@@ -154,22 +154,23 @@ class SiteController extends Controller
         // return $ser;   
     }
 
-    public function actionSearchFilter($search, $category, $amount_from, $amount_to, $region)
+    public function actionSearchFilter($search, $category)
     {
         // , $category, $amount_from, $amount_to, $region
-        $category_model = Category::find()->where(['id'=> $category]);
-        $category_model = Country::find()->where(['id'=> $region]);
+        $category_model = Category::find()->where(['id'=> $category])->all();
+        // $category_model = Country::find()->where(['id'=> $region]);
         $model = Posters::find()->orFilterWhere(['like', 'title', $search])
-        ->orFilterWhere(['ilike', 'description', $search])
-        ->orFilterWhere(['category' => $category_model ]);
+        ->orFilterWhere(['category' => $category_model])->all();
+        // ->orFilterWhere(['ilike', 'description', $search])
+        // ->orFilterWhere(['category' => $category_model ]);
         // ->orFilterWhere(['country' => $region])
         // ->orFilterWhere(['>', 'price', $amount_from])
         // ->orFilterWhere(['<', 'price', $amount_to])->all();
 
-
-        return $this->render('searchfilter', [
-            'category_model' => $model,
-        ]);
+        return $category_model;
+        // return $this->render('searchfilter', [
+        //     'category_model' => $model,
+        // ]);
 
         // return $model;
     }

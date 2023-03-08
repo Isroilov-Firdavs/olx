@@ -29,12 +29,28 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            // 'id',
             'title',
             'price',
             // 'category',
-            'image',
-            //'description:ntext',
+            // 'image',
+            [
+                'attribute' => 'image',
+                'format' => 'raw',
+                'value' => function($data)
+                {
+                    return "<img src='../../../frontend/web/images/".$data->image."' width='50px'>";
+                }
+            ],
+            // 'description:ntext',
+            [
+                'attribute' => 'description',
+                'format' => 'raw',
+                'value' => function($data)
+                {
+                    return $data->description;
+                }
+            ],
             //'user_id',
             // 'address',
             [
