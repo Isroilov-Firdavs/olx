@@ -13,7 +13,7 @@ use yii\helpers\Html;
             <p>Bu sayt orqali siz o'z e'lonlaringizni bepulga joylashtirib borishingiz
             mumkin bo'ladi. Istalgan kategoriyangizni tanlang va o'zingiz xohlagan
             e'loningizni joylashtiring</p>
-            <a class="btn btn-primary" href="/site/add">E'lon joylashtirish</a>
+            <a class="btn btn-secondary" href="/site/add">E'lon joylashtirish</a>
         </div>
     </div>
     <!-- Call to Action-->
@@ -27,7 +27,7 @@ use yii\helpers\Html;
                 <input type="text" class="form-control form-control-lg" id="search" placeholder="<?=$count;?> e'lonlar yoningizda">
               </div>
               <div class="col-auto">
-                <button type="submit" id="search_index" class="btn btn-primary btn-lg mb-3">Izlash</button>
+                <button type="submit" id="search_index" class="btn btn-secondary btn-lg mb-3">Izlash</button>
               </div>
             </form>
         </div>

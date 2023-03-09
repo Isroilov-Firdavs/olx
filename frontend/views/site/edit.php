@@ -25,16 +25,7 @@ $this->title = "O'zgartirish";
         <?= $form->field($model, 'title') ?>
         </div>
         <div class="col-lg-6">
-        <?php // $form->field($model, 'price')?>
-        <?=$form->field($model, 'price', )->widget(MaskMoney::classname(), [
-            'name' => 'amount_rounded_1',
-            'value' => 1000,
-            'pluginOptions' => [
-            'prefix' => '$ ',
-            // 'suffix' => ' €',
-            'precision' => 0
-        ]
-        ])?>
+        <?= $form->field($model, 'price')->textInput(['type'=>'number']) ?>
         </div>
         <div class="col-lg-6">
         <?php //$form->field($model, 'category') ?>
@@ -50,10 +41,8 @@ $this->title = "O'zgartirish";
             ?>
         </div>
         <div class="col-lg-6">
-        <?php // $form->field($model, 'image')->fileInput() ?>
         </div>
     </div>
-        <?php // $form->field($model, 'address') ?>
         <?=
             $form->field($model, 'address')->widget(Select2::classname(), [
             'data' => ArrayHelper::map(Country::find()->all(), 'id', 'c_name'),
@@ -64,18 +53,10 @@ $this->title = "O'zgartirish";
             ],
             ]);
             ?>
-
-        <?php // $form->field($model, 'description') ?>
-        <?php // Usage with model & active form including model validation
-            echo $form->field($model, 'description')->widget(Summernote::class, [
-                'useKrajeePresets' => true,
-                // other widget settings
-            ]);
-                ?>
-        <?php // $form->field($model, 'user_id') ?>
+            <?= $form->field($model, 'description')->textarea(['rows' => '5']) ?>
 
         <div class="form-group">
-            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton('Submit', ['class' => 'btn btn-success']) ?>
         </div>
     <?php ActiveForm::end(); ?>
 

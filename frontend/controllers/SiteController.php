@@ -154,23 +154,43 @@ class SiteController extends Controller
         // return $ser;   
     }
 
-    public function actionSearchFilter($search, $category)
+    public function actionSearchFilter($category, $country, $amount_from, $amount_to)
     {
         // , $category, $amount_from, $amount_to, $region
-        $category_model = Category::find()->where(['id'=> $category])->all();
-        // $category_model = Country::find()->where(['id'=> $region]);
-        $model = Posters::find()->orFilterWhere(['like', 'title', $search])
-        ->orFilterWhere(['category' => $category_model])->all();
+        // $category_model = Category::find()->where(['id'=> $category])->all();
+        $model = Posters::find()
+        ->andWhere(['category' => $category])
+        ->orWhere(['address' => $country])
+        ->andWhere(['>', 'price', $amount_from])
+        ->orWhere(['<=', 'price', $amount_to])
+        ->orderBy(['id'=> SORT_DESC])
+        ->all();
+        // ->count();
+        
+
+
+        $count_real_estate = Posters::find()->where(['category' => 1])->count();
+        $transport = Posters::find()->where(['category' => 2])->count();
+        $electronics = Posters::find()->where(['category' => 3])->count();
+        $jobs = Posters::find()->where(['category' => 4])->count();
+
+        // $category_model = Country::find()->where(['id'=> $region]); 
+        // $model = Posters::find()->orFilterWhere(['like', 'title', $search])
+        // ->orFilterWhere(['category' => $category_model])->all();
         // ->orFilterWhere(['ilike', 'description', $search])
         // ->orFilterWhere(['category' => $category_model ]);
         // ->orFilterWhere(['country' => $region])
         // ->orFilterWhere(['>', 'price', $amount_from])
         // ->orFilterWhere(['<', 'price', $amount_to])->all();
 
-        return $category_model;
-        // return $this->render('searchfilter', [
-        //     'category_model' => $model,
-        // ]);
+        // return $category_model->cate->id;
+        return $this->render('searchfilter', [
+            'model' => $model,
+            'count_real_estate' => $count_real_estate,
+            'transport' => $transport,
+            'electronics' => $electronics,
+            'jobs' => $jobs
+        ]);
 
         // return $model;
     }

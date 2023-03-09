@@ -1,27 +1,70 @@
 <?php
 use yii\helpers\Url;
 
-$this->title = "E'lonlar"
+$this->title = "E'lonlar" 
 ?>
 <!-- Header-->
 <div class="container mt-5">
   <div class="card my-5 py-4 text-center border-0">
     <div class="card-body">
-      <form class="row g-3"> 
-        <div class="row">
-          <div class="col-lg-8">
-            <label for="search" class="visually-hidden">Qidiruv</label>
-            <input type="text" class="form-control form-control-lg" id="search" placeholder="Nima qidiryapsiz?"></div>
-          <div class="col-lg-4">
-          <button type="submit" id="search_page" class="btn btn-primary btn-lg mb-3">Izlash</button></div>
-        </div>
+      <form class="row g-3">
+          <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+              <div class="card">
+                <div class="card-body">
+                  <input type="text" id="search" class="form-control mb-3" placeholder="Nima qidiryapsiz?">
+                  <button type="submit" id="search_index" class="btn btn-success text-center mb-3">Izlash</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h3>Filtrlash</h3>
+          <div class="search-filter">
+            <div class="search-item m-2">
+              <label for="category" class="form-label">Kategoriya</label>
+              <select class="form-select mx-2" id="category" aria-label="Default select example">
+                <option value="0">Kategoriyani tanlang</option>
+                <option value="1">Ko'chmas mulk</option>
+                <option value="2">Transport</option>
+                <option value="3">Elektronika</option>
+                <option value="4">Ish o'rinlari</option>
+              </select>
+            </div>
+            <div class="search-item m-2">
+              <label for="amount" class="form-label">Narxi</label>
+              <div class="input-group">
+                <input type="number" id="amount_from" value="0" class="form-control price-input-filter mx-2" placeholder="dan">
+                <input type="number" id="amount_to" value="0" class="form-control price-input-filter mx-2" placeholder="gacha">
+              </div>
+            </div>
+            <div class="search-item m-2">
+              <label for="region" class="form-label">Hudud</label>
+              <select class="form-select" id="region" aria-label="Default select example">
+                <option value="0">Hududni tanlang</option>
+                <option value="1">Toshkent</option>
+                <option value="2">Namangan</option>
+                <option value="3">Farg'ona</option>
+                <option value="4">Andijon</option>
+                <option value="5">Sirdayyo</option>
+                <option value="6">Jizzax</option>
+                <option value="7">Qashqadaryo</option>
+                <option value="8">Suxxandaryo</option>
+                <option value="9">Navoiy</option>
+                <option value="10">Xorazim</option>
+                <option value="11">Qoraqalpog'iston</option>
+                <option value="12">Samarqand</option>
+                <option value="13">Buxoro</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-auto">
+          <button type="submit" id="search_page" class="btn btn-success btn-lg mb-3">Izlash</button>
         </div>
       </form>
     </div>
   </div>
   <hr>
 </div>
-
 
 <div class="container">
   <div class="row">

@@ -13,22 +13,28 @@ $("#search_index").on('click', function(event){
 	event.preventDefault();
 
 
-	var d = $("#search").val();
-	console.log(d)
-
-	// $.get("http://olx.prog.uz/site/search", {id:d},
-	// 	function(data){
-	// 	})
-	window.location.href = "http://olx.prog.uz/site/search?ser="+d;
+	var d = $("#search");
+	if ( !d.val() )
+	{
+		$("#search").addClass('search_error');
+	}
+	else
+	{
+		window.location.href = "http://olx.prog.uz/site/search?ser="+d.val();
+	}
 	
 
 	
-})
+}) 
 
 $("#search_page").on('click', function(event){
 	event.preventDefault()
-	var search = $("#search").val();
-	window.location.href = "http://olx.prog.uz/site/search?ser="+search;
+	var category = $("#category").val();
+	var amount_from = $("#amount_from").val();
+	var amount_to = $("#amount_to").val();
+	var region = $("#region").val();
+	console.log(search, category, amount_from, amount_to, region)
+	window.location.href = "http://olx.prog.uz/site/search-filter?category="+category+"&country="+region+"&amount_from="+amount_from+"&amount_to="+amount_to;
 })
 
 var title = $("#title");

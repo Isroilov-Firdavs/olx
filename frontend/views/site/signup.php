@@ -22,7 +22,7 @@ $this->title = 'Signup';
                         <?= $form->field($model, 'password')->passwordInput() ?>
 
                         <div class="form-group">
-                            <?= Html::submitButton('Signup', ['class' => 'btn btn-primary form-control', 'name' => 'signup-button']) ?>
+                            <?= Html::submitButton('Signup', ['class' => 'btn btn-success form-control', 'name' => 'signup-button']) ?>
                         </div>
 
                     <?php ActiveForm::end(); ?>

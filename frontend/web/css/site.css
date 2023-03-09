@@ -9,6 +9,10 @@ main > .container, main > .container-fluid
     height: 60px;
 }
 
+.main_error{
+    margin-top: 1px;
+}
+
 .footer > .container, .footer > .container-fluid {
     padding-right: 15px;
     padding-left: 15px;
@@ -123,4 +127,8 @@ a.desc:after {
 }
 #foo{
     border: 0.1rem solid red;
+}
+
+.search_error{
+    border: 2px solid red;
 }

@@ -38,7 +38,7 @@ class Posters extends \yii\db\ActiveRecord
         return [
             [['title', 'price', 'category', 'address',  'description'], 'required'],
             // [['image'], 'file',],
-            ['image', 'file', 'extensions' => 'png, jpg, png '],
+            ['image', 'file', 'extensions' => 'png, jpg, png, webp '],
             // [['price', 'category', 'user_id', 'address'], 'default', 'value' => null],
             [['price', 'category', 'user_id', 'address'], 'integer'],
             [['description'], 'string'],
@@ -60,9 +60,9 @@ class Posters extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
             'price' => 'Maxsulot narxi',
-            'category' => 'Category',
-            'image' => 'Image',
-            'description' => 'Description',
+            'category' => 'Kategoriya',
+            'image' => 'Rasm',
+            'description' => "Ma'lumot",
             'user_id' => 'User ID',
             'address' => 'Address',
         ];

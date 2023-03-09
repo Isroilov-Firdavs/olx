@@ -67,9 +67,12 @@ AppAsset::register($this);
 </header>
 
         <!-- Header-->
-
         <main role="main" class="flex-shrink-0">
 		    <div class="container">
+                 <div class="row">
+                    <div id="main_error" class="col-lg-6 offset-lg-3">
+                    </div>
+                </div>
 		        <?= Breadcrumbs::widget([
 		            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
 		        ]) ?>
