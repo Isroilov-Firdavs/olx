@@ -103,7 +103,7 @@ use yii\helpers\Html;
                             <div class="card-body">
                             <div class="poster-title-cont">
                                 <a href="/site/one?id=<?=$post->id?>" class="poster-link"><span class="card-title poster-title poster-link"><?=$post->title?></span></a>
-                            </div>
+                            </div> 
                             <p class="card-text" style="margin: 0"><?=$post->addres->c_name?></p>
                             <p class="card-text">- <?=$post->data?></p>
                             <h5 class="card-subtitle mb-2"><?=$post->price?> SO'M</h5>

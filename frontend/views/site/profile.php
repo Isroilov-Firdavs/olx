@@ -20,8 +20,6 @@
               <div>
                 <h5 class="">Username: <small class="text-primary"><?=$u->username?></small></h5>
                 <h5 class="">Email: <small class="text-primary"><?=$u->email?></small></h5>
-                <!-- <h5 class="">Telefon: <small class="text-primary">+998911234567</small></h5> -->
-
               </div>
               <hr>
               <div class="d-flex justify-content-between">

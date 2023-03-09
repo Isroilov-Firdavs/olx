@@ -70,4 +70,4 @@ $this->title = "E'lon qo'shish";
         </div>
     <?php ActiveForm::end(); ?>
 
-</div><!-- site-add -->
+</div>

@@ -28,7 +28,6 @@ $this->title = "O'zgartirish";
         <?= $form->field($model, 'price')->textInput(['type'=>'number']) ?>
         </div>
         <div class="col-lg-6">
-        <?php //$form->field($model, 'category') ?>
         <?=
             $form->field($model, 'category')->widget(Select2::classname(), [
             'data' => ArrayHelper::map(Category::find()->all(), 'id', 'category_name'),
@@ -60,4 +59,4 @@ $this->title = "O'zgartirish";
         </div>
     <?php ActiveForm::end(); ?>
 
-</div><!-- site-add -->
+</div>

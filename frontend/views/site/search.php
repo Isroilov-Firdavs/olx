@@ -109,13 +109,6 @@ $this->title = "E'lonlar"
                 </div>
               </div>
             <?endforeach;?>
-            <?php
-              //     echo \yii\bootstrap5\LinkPager::widget(
-              // [
-              // 'pagination' => $sahifa,
-
-              // ])
-            ?>
           </div>
       </div>
     </div>
